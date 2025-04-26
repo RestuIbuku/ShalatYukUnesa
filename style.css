@@ -2,6 +2,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f8f9fa;
 }
+
 .header {
     background: linear-gradient(135deg, #1e5631 0%, #006400 100%);
     color: white;
@@ -9,6 +10,7 @@ body {
     margin-bottom: 30px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .prayer-card {
     background-color: white;
     border-radius: 15px;
@@ -16,36 +18,43 @@ body {
     transition: transform 0.3s;
     margin-bottom: 20px;
 }
+
 .prayer-card:hover {
     transform: translateY(-5px);
 }
+
 .prayer-card-header {
     background: linear-gradient(135deg, #006400 0%, #1e5631 100%);
     color: white;
     border-radius: 15px 15px 0 0;
     padding: 15px;
 }
+
 .prayer-time {
     font-size: 1.8rem;
     font-weight: bold;
     color: #006400;
 }
+
 .prayer-name {
     font-weight: bold;
     color: #333;
     font-size: 1.2rem;
 }
+
 .calendar-container {
     background-color: white;
     border-radius: 15px;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .hijri-date {
     font-size: 1.5rem;
     color: #006400;
     font-weight: bold;
 }
+
 .location-display {
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 10px;
@@ -53,20 +62,24 @@ body {
     margin-top: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
 #map {
     height: 200px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .footer {
     background-color: #333;
     color: white;
     padding: 20px 0;
     margin-top: 30px;
 }
+
 .unesa-logo {
     max-height: 80px;
 }
+
 .team-member {
     background-color: white;
     border-radius: 8px;
@@ -74,6 +87,7 @@ body {
     margin-bottom: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
 .countdown-container {
     background: linear-gradient(135deg, #006400 0%, #1e5631 100%);
     color: white;
@@ -83,13 +97,16 @@ body {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .next-prayer {
     font-size: 1.2rem;
 }
+
 .countdown {
     font-size: 2rem;
     font-weight: bold;
 }
+
 .coordinates {
     font-size: 0.9rem;
     color: #666;
