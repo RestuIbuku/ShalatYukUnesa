@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jadwal Salat & Kalender Hijriah</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
@@ -41,7 +44,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="col-lg-6">
                 <div class="calendar-container">
                     <h3><i class="fas fa-calendar-alt me-2"></i>Kalender Hijriah</h3>
@@ -62,7 +65,9 @@
                                     <th>Sabtu</th>
                                 </tr>
                             </thead>
-                            <tbody id="hijri-calendar-body"></tbody>
+                            <tbody id="hijri-calendar-body">
+                                <!-- Kalender akan diisi oleh JavaScript -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -79,8 +84,77 @@
         <!-- Prayer Times -->
         <h2 class="mb-4 text-center"><i class="fas fa-clock me-2"></i>Jadwal Waktu Salat Hari Ini</h2>
         <div class="row">
-            <!-- Repeated Prayer Card -->
-            <div class="col-md-4 col-6" id="prayer-cards-container"></div>
+            <div class="col-md-4 col-6">
+                <div class="prayer-card">
+                    <div class="prayer-card-header">
+                        <i class="fas fa-sun me-2"></i>Subuh
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="prayer-time" id="fajr-time">--:--</div>
+                        <div class="prayer-name">Subuh</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="prayer-card">
+                    <div class="prayer-card-header">
+                        <i class="fas fa-sun me-2"></i>Dzuhur
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="prayer-time" id="dhuhr-time">--:--</div>
+                        <div class="prayer-name">Dzuhur</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="prayer-card">
+                    <div class="prayer-card-header">
+                        <i class="fas fa-sun me-2"></i>Ashar
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="prayer-time" id="asr-time">--:--</div>
+                        <div class="prayer-name">Ashar</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="prayer-card">
+                    <div class="prayer-card-header">
+                        <i class="fas fa-sun me-2"></i>Maghrib
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="prayer-time" id="maghrib-time">--:--</div>
+                        <div class="prayer-name">Maghrib</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="prayer-card">
+                    <div class="prayer-card-header">
+                        <i class="fas fa-moon me-2"></i>Isya
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="prayer-time" id="isha-time">--:--</div>
+                        <div class="prayer-name">Isya</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="prayer-card">
+                    <div class="prayer-card-header">
+                        <i class="fas fa-sun me-2"></i>Terbit
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="prayer-time" id="sunrise-time">--:--</div>
+                        <div class="prayer-name">Terbit Matahari</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -88,8 +162,31 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <!-- Footer content as before -->
-                <!-- ... -->
+                <div class="col-md-4 mb-4">
+                    <h5>Tentang Website</h5>
+                    <p>Website jadwal salat dan kalender Hijriah untuk memudahkan umat Muslim mengetahui waktu salat dan tanggal Hijriah secara akurat.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Informasi</h5>
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="/api/placeholder/80/80" alt="Logo Unesa" class="me-2" style="height: 50px;">
+                        <div>
+                            <p class="mb-0">Universitas Negeri Surabaya</p>
+                            <p class="mb-0">Prodi S1 Informatika</p>
+                            <p class="mb-0">Fakultas PSDKU Kampus Unesa 5 Magetan</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <h5>Tim Pengembang - Kelompok 3 2024C</h5>
+                    <div class="team-members">
+                        <div class="team-member">Restu Mahardika</div>
+                        <div class="team-member">Faqih</div>
+                        <div class="team-member">Rifkia</div>
+                        <div class="team-member">Yussa</div>
+                        <div class="team-member">Zafa Fanan</div>
+                    </div>
+                </div>
             </div>
             <div class="row mt-3">
                 <div class="col-12 text-center">
