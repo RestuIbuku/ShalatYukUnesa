@@ -1,0 +1,153 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.prayer-time-app {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    overflow: hidden;
+}
+
+.prayer-card .card-header {
+    background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+}
+
+.hijri-calendar-card .card-header {
+    background: linear-gradient(135deg, #1cc88a 0%, #13855c 100%);
+}
+
+.prayer-times-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.prayer-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.prayer-time:hover {
+    background-color: #e9ecef;
+    transform: translateY(-2px);
+}
+
+.prayer-time span:first-child {
+    font-weight: 600;
+    color: #495057;
+}
+
+.prayer-time span:last-child {
+    font-weight: 700;
+    color: #2e59d9;
+    font-size: 1.1rem;
+}
+
+.hijri-date-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.hijri-date-display {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #13855c;
+}
+
+.gregorian-date-display {
+    margin-top: 5px;
+}
+
+.hijri-calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.calendar-day {
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.calendar-day-header {
+    font-weight: bold;
+    background-color: #e9ecef;
+}
+
+.current-day {
+    background-color: #1cc88a;
+    color: white;
+    font-weight: bold;
+}
+
+.other-month-day {
+    color: #adb5bd;
+    background-color: #f1f3f5;
+}
+
+.month-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    align-self: center;
+}
+
+#next-prayer {
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+@media (max-width: 768px) {
+    .hijri-date-display {
+        font-size: 1.5rem;
+    }
+    
+    .prayer-time span:last-child {
+        font-size: 1rem;
+    }
+    
+    .calendar-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .month-title {
+        order: -1;
+    }
+}
