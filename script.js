@@ -186,13 +186,29 @@ async function initHijriCalendar(date) {
     }
 }
 
-// Fungsi untuk mengupdate tampilan tanggal Hijriah
+// Fungsi untuk update tampilan tanggal Hijriah
 function updateHijriDateDisplay(hijriDate) {
     const hijriDateElement = document.getElementById('hijri-date');
     const gregorianDateElement = document.getElementById('gregorian-date');
     
+    // Daftar nama bulan Hijriah dalam bahasa Indonesia
+    const hijriMonths = {
+        1: 'Muharram',
+        2: 'Shafar',
+        3: 'Rabiul Awal',
+        4: 'Rabiul Akhir',
+        5: 'Jumadil Awal',
+        6: 'Jumadil Akhir',
+        7: 'Rajab',
+        8: 'Sya\'ban',
+        9: 'Ramadhan',
+        10: 'Syawal',
+        11: 'Dzulqaidah',
+        12: 'Dzulhijjah'
+    };
+    
     hijriDateElement.innerHTML = `
-        ${hijriDate.day} ${hijriDate.month.id} ${hijriDate.year} H
+        ${hijriDate.day} ${hijriMonths[parseInt(hijriDate.month.number)]} ${hijriDate.year} H
     `;
     
     const gregorianDate = new Date();
@@ -219,16 +235,16 @@ function changeHijriMonth(change) {
 // Fungsi untuk generate kalender Hijriah
 async function generateHijriCalendar(month, year) {
     try {
-        // Dapatkan jumlah hari dalam bulan Hijriah
-        const daysResponse = await fetch(`https://api.aladhan.com/v1/gToHCalendar/${month}/${year}`);
-        const daysData = await daysResponse.json();
+        // Dapatkan data kalender untuk bulan dan tahun tertentu
+        const response = await fetch(`https://api.aladhan.com/v1/hToGCalendar/${month}/${year}`);
+        const data = await response.json();
         
-        if (daysData.code === 200) {
-            const calendarData = daysData.data;
+        if (data.code === 200) {
+            const calendarData = data.data;
             const calendarElement = document.getElementById('hijri-calendar');
             const monthTitleElement = document.getElementById('current-month');
             
-            // Daftar nama bulan Hijriah dalam bahasa Indonesia
+            // Daftar nama bulan Hijriah
             const hijriMonths = {
                 1: 'Muharram',
                 2: 'Shafar',
@@ -260,7 +276,10 @@ async function generateHijriCalendar(month, year) {
             });
             
             // Temukan hari pertama bulan ini
-            const firstDay = new Date(calendarData[0].gregorian.date);
+            const firstDayData = calendarData.find(d => d.hijri.day === "1");
+            if (!firstDayData) return;
+            
+            const firstDay = new Date(firstDayData.gregorian.date);
             let startingDay = firstDay.getDay(); // 0 = Minggu, 1 = Senin, dst
             
             // Tambahkan sel kosong untuk hari sebelum bulan dimulai
@@ -271,28 +290,47 @@ async function generateHijriCalendar(month, year) {
             }
             
             // Tambahkan hari-hari dalam bulan
-            calendarData.forEach(day => {
+            const daysInMonth = calendarData.filter(d => parseInt(d.hijri.month.number) === month);
+            
+            daysInMonth.forEach(day => {
                 const dayElement = document.createElement('div');
                 dayElement.className = 'calendar-day';
                 
                 // Cek apakah hari ini
                 const today = new Date();
                 const currentGregorian = new Date(day.gregorian.date);
-                if (today.getDate() === currentGregorian.getDate() && 
-                    today.getMonth() === currentGregorian.getMonth() && 
-                    today.getFullYear() === currentGregorian.getFullYear()) {
+                const isToday = today.getDate() === currentGregorian.getDate() && 
+                               today.getMonth() === currentGregorian.getMonth() && 
+                               today.getFullYear() === currentGregorian.getFullYear();
+                
+                if (isToday) {
                     dayElement.classList.add('current-day');
                 }
                 
                 dayElement.innerHTML = `
                     <div>${day.hijri.day}</div>
-                    <small class="text-muted">${day.gregorian.day}</small>
+                    <small class="text-muted">${currentGregorian.getDate()}</small>
                 `;
                 
                 calendarElement.appendChild(dayElement);
             });
+            
+            // Hitung total sel yang sudah ditambahkan
+            const totalCells = startingDay + daysInMonth.length;
+            const remainingCells = 7 - (totalCells % 7);
+            
+            // Tambahkan sel kosong jika diperlukan untuk melengkapi grid
+            if (remainingCells < 7) {
+                for (let i = 0; i < remainingCells; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'calendar-day other-month-day';
+                    calendarElement.appendChild(emptyDay);
+                }
+            }
         }
     } catch (error) {
         console.error('Error generating Hijri calendar:', error);
+        document.getElementById('hijri-calendar').innerHTML = 
+            '<div class="text-center p-4">Gagal memuat kalender. Silakan coba lagi.</div>';
     }
 }
