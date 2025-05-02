@@ -167,7 +167,8 @@ function calculateNextPrayer(timings) {
 async function initHijriCalendar(date) {
     try {
         // Dapatkan tanggal Hijriah hari ini
-        const response = await fetch(`https://api.aladhan.com/v1/gToH?date=${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`);
+        const formattedDate = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+        const response = await fetch(`https://api.aladhan.com/v1/gToH?date=${formattedDate}`);
         const data = await response.json();
         
         if (data.code === 200) {
@@ -180,6 +181,8 @@ async function initHijriCalendar(date) {
             
             // Generate kalender
             generateHijriCalendar(currentMonth, currentYear);
+        }else {
+            console.error('Error fetching Hijri date:', data);
         }
     } catch (error) {
         console.error('Error fetching Hijri date:', error);
