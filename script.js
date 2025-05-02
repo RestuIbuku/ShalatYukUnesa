@@ -186,36 +186,6 @@ async function initHijriCalendar(date) {
     }
 }
 
-// Fungsi untuk mengupdate tampilan tanggal Hijriah
-function updateHijriDateDisplay(hijriDate) {
-    const hijriDateElement = document.getElementById('hijri-date');
-    const gregorianDateElement = document.getElementById('gregorian-date');
-    
-    hijriDateElement.innerHTML = `
-        ${hijriDate.day} ${hijriDate.month.id} ${hijriDate.year} H
-    `;
-    
-    const gregorianDate = new Date();
-    const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
-    gregorianDateElement.textContent = gregorianDate.toLocaleDateString('id-ID', options);
-}
-
-// Fungsi untuk mengganti bulan kalender Hijriah
-function changeHijriMonth(change) {
-    currentMonth += change;
-    
-    // Handle perubahan tahun jika bulan melebihi 12 atau kurang dari 1
-    if (currentMonth > 12) {
-        currentMonth = 1;
-        currentYear++;
-    } else if (currentMonth < 1) {
-        currentMonth = 12;
-        currentYear--;
-    }
-    
-    generateHijriCalendar(currentMonth, currentYear);
-}
-
 // Fungsi untuk generate kalender Hijriah
 async function generateHijriCalendar(month, year) {
     try {
@@ -228,8 +198,24 @@ async function generateHijriCalendar(month, year) {
             const calendarElement = document.getElementById('hijri-calendar');
             const monthTitleElement = document.getElementById('current-month');
             
+            // Daftar nama bulan Hijriah dalam bahasa Indonesia
+            const hijriMonths = {
+                1: 'Muharram',
+                2: 'Shafar',
+                3: 'Rabiul Awal',
+                4: 'Rabiul Akhir',
+                5: 'Jumadil Awal',
+                6: 'Jumadil Akhir',
+                7: 'Rajab',
+                8: 'Sya\'ban',
+                9: 'Ramadhan',
+                10: 'Syawal',
+                11: 'Dzulqaidah',
+                12: 'Dzulhijjah'
+            };
+            
             // Set judul bulan
-            monthTitleElement.textContent = `${calendarData[0].hijri.month.id} ${year} H`;
+            monthTitleElement.textContent = `${hijriMonths[month]} ${year} H`;
             
             // Kosongkan kalender
             calendarElement.innerHTML = '';
