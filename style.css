@@ -1,5 +1,6 @@
 body {
-    background-color: #f8f9fa;
+    background: #2A7B9B;
+    background: linear-gradient(90deg,rgba(42, 123, 155, 0.696) 0%, rgba(87, 199, 133, 0.696) 50%, rgba(237, 221, 83, 0.696) 100%);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
 }
@@ -11,10 +12,11 @@ body {
 }
 
 header {
-    background: linear-gradient(135deg, #1e5631 0%, #006400 100%);
+    background: linear-gradient(135deg, #1cc88a 0%, #13855c 100%);
     color: white;
     padding: 20px 0;
     margin-bottom: 30px;
+    border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -41,7 +43,7 @@ header {
 
 .card {
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border: none;
     overflow: hidden;
 }
@@ -71,7 +73,7 @@ header {
 }
 
 .prayer-time:hover {
-    background-color: #e9ecef;
+    background-color: #d6d662;
     transform: translateY(-2px);
 }
 
@@ -88,7 +90,7 @@ header {
 
 .hijri-date-container {
     padding: 20px;
-    background-color: #f8f9fa;
+    background-color: #d6d662;
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -97,7 +99,6 @@ header {
     font-size: 2rem;
     font-weight: 700;
     color: #13855c;
-    line-height: 1.2;
 }
 
 .gregorian-date-display {
@@ -115,15 +116,6 @@ header {
     text-align: center;
     border-radius: 5px;
     background-color: #f8f9fa;
-    min-height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.calendar-day small {
-    font-size: 0.75rem;
-    margin-top: 3px;
 }
 
 .calendar-day-header {
@@ -135,10 +127,6 @@ header {
     background-color: #1cc88a;
     color: white;
     font-weight: bold;
-}
-
-.current-day small {
-    color: rgba(255, 255, 255, 0.8);
 }
 
 .other-month-day {
@@ -159,7 +147,7 @@ header {
 }
 
 footer {
-    background-color: #f8f9fa;
+    background-color: #eef4f2;
     border-radius: 10px;
     margin-top: 30px;
 }
@@ -188,5 +176,44 @@ footer {
     
     .month-title {
         order: -1;
+    }
+}
+
+/* Developer Section Styles */
+.developers-section {
+    padding: 15px;
+    background-color: #c7c7c3;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.developer-profiles {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.developer-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 3px solid #1cc88a;
+    transition: all 0.3s ease;
+}
+
+.developer-img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .developer-img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .developer p {
+        font-size: 0.8rem;
     }
 }
